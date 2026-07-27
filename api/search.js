@@ -71,5 +71,5 @@ const lastBrace = cleaned.lastIndexOf('}');
   } catch (err) {
     console.error('ARASANA API hata:', err);
     return res.status(500).json({ error: 'Arama sırasında bir hata oluştu' });
-  }
+ }
 }
