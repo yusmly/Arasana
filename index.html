@@ -372,7 +372,7 @@
 
     }catch(err){
       console.error('ARASANA hata:', err);
-      answerArea.innerHTML = `<div class="error-box">Bir şeyler ters gitti, ARASANA şu an cevap veremedi. Tekrar dener misin?</div>`;
+    answerArea.innerHTML = `<div class="error-box">Bir şeyler ters gitti: <strong>${escapeHtml(err.message || String(err))}</strong></div>`;
     }finally{
       statusLine.style.display = 'none';
       logoImg.classList.remove('spin-globe');
