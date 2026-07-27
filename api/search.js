@@ -58,9 +58,9 @@ export default async function handler(req, res) {
   }
 }
 
-    let cleaned = fullText.replace(/```json/g, '').replace(/```/g, '').trim();
-    const firstBrace = cleaned.indexOf('{');
-    const lastBrace = cleaned.lastIndexOf('}');
+let cleaned = fullText.replace(/```json/g, '').replace(/```/g, '').trim();
+const firstBrace = cleaned.indexOf('{');
+const lastBrace = cleaned.lastIndexOf('}');
     if (firstBrace !== -1 && lastBrace !== -1) {
       cleaned = cleaned.slice(firstBrace, lastBrace + 1);
     }
