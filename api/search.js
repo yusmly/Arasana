@@ -30,8 +30,6 @@ export default async function handler(req, res) {
       });
     }
 
-    // "En faydalı cevap" kutusu için: önce answerBox, sonra knowledgeGraph,
-    // yoksa ilk organik sonucun özeti kullanılır.
     let answer = '';
     if (data.answerBox) {
       answer = data.answerBox.answer || data.answerBox.snippet || '';
@@ -56,20 +54,4 @@ export default async function handler(req, res) {
     console.error('ARASANA API hata:', err);
     return res.status(500).json({ error: 'Arama sırasında bir hata oluştu: ' + err.message });
   }
-}
-
-let cleaned = fullText.replace(/```json/g, '').replace(/```/g, '').trim();
-const firstBrace = cleaned.indexOf('{');
-const lastBrace = cleaned.lastIndexOf('}');
-    if (firstBrace !== -1 && lastBrace !== -1) {
-      cleaned = cleaned.slice(firstBrace, lastBrace + 1);
-    }
-
-    const parsed = JSON.parse(cleaned);
-    return res.status(200).json(parsed);
-
-  } catch (err) {
-    console.error('ARASANA API hata:', err);
-    return res.status(500).json({ error: 'Arama sırasında bir hata oluştu' });
- }
 }
